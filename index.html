@@ -1,13 +1,103 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Inicio de Sesión</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Estilos para mensajes de error */
+    .error-message {
+      color: #ff0000;
+      margin-top: -8px;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <form action="#" method="post" onsubmit="return validarFormulario()">
+    <label for="correo">Correo:</label>
+    <input type="email" id="correo" name="correo" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+    <div class="error-message" id="error-correo"></div>
+
+    <label for="contrasena">Contraseña:</label>
+    <input type="password" id="contrasena" name="contrasena" required pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z\d]).{8,}">
+    <div class="error-message" id="error-contrasena"></div>
+
+    <button type="submit">Iniciar Sesión</button>
+  </form>
+
+  <script>
+    function validarFormulario() {
+      var correo = document.getElementById('correo').value;
+      var contrasena = document.getElementById('contrasena').value;
+      var errorCorreo = document.getElementById('error-correo');
+      var errorContrasena = document.getElementById('error-contrasena');
+
+      // Validar correo
+      var correoPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!correoPattern.test(correo)) {
+        errorCorreo.innerHTML = 'Correo no válido';
+        return false;
+      } else {
+        errorCorreo.innerHTML = '';
+      }
+
+      // Validar contraseña
+      var contrasenaPattern = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z\d]).{8,}$/;
+      if (!contrasenaPattern.test(contrasena)) {
+        errorContrasena.innerHTML = 'La contraseña debe contener al menos 8 caracteres, una mayúscula, un número y un carácter especial.';
+        return false;
+      } else {
+        errorContrasena.innerHTML = '';
+      }
+
+      return true;
+    }
+  </script>
+</body>
 </html>
+
