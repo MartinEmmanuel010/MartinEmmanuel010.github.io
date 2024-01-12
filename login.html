@@ -24,6 +24,11 @@
       animation: fadeIn 1s ease-in-out;
     }
 
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
     label {
       display: block;
       margin-bottom: 8px;
@@ -84,6 +89,8 @@
 </head>
 <body>
   <form action="#" method="post" onsubmit="return validarFormulario()">
+    <h2>Inicio de Sesión</h2>
+
     <label for="correo">Correo:</label>
     <input type="email" id="correo" name="correo" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
     <div class="error-message" id="error-correo"></div>
