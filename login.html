@@ -3,132 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario de Inicio de Sesión</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(45deg, #3498db, #8e44ad);
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    form {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      width: 300px;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      color: #333;
-    }
-
-    input {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 16px;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #3498db;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    button:hover {
-      background-color: #2980b9;
-    }
-
-    /* Estilos para mensajes de error */
-    .error-message {
-      color: #e74c3c;
-      margin-top: -8px;
-      margin-bottom: 16px;
-      animation: shake 0.3s ease-in-out;
-    }
-
-    @keyframes shake {
-      0%, 100% {
-        transform: translateX(0);
-      }
-      25%, 75% {
-        transform: translateX(-5px);
-      }
-      50% {
-        transform: translateX(5px);
-      }
-    }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+  <title>Login Tesla Style</title>
 </head>
 <body>
-  <form action="#" method="post" onsubmit="return validarFormulario()">
-    <h2>Inicio de Sesión</h2>
 
-    <label for="correo">Correo:</label>
-    <input type="email" id="correo" name="correo" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
-    <div class="error-message" id="error-correo"></div>
+  <div class="login-container">
+    <form class="login-form">
+      <h2>Login</h2>
+      <div class="input-container">
+        <i class="fas fa-envelope"></i>
+        <input type="text" placeholder="Correo electrónico">
+      </div>
+      <div class="input-container">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Contraseña">
+      </div>
+      <button type="submit">Iniciar sesión</button>
+    </form>
+  </div>
 
-    <label for="contrasena">Contraseña:</label>
-    <input type="password" id="contrasena" name="contrasena" required pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z\d]).{8,}">
-    <div class="error-message" id="error-contrasena"></div>
-
-    <button type="submit">Iniciar Sesión</button>
-  </form>
-
-  <script>
-    function validarFormulario() {
-      var correo = document.getElementById('correo').value;
-      var contrasena = document.getElementById('contrasena').value;
-      var errorCorreo = document.getElementById('error-correo');
-      var errorContrasena = document.getElementById('error-contrasena');
-
-      // Validar correo
-      var correoPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!correoPattern.test(correo)) {
-        errorCorreo.innerHTML = 'Correo no válido';
-        return false;
-      } else {
-        errorCorreo.innerHTML = '';
-      }
-
-      // Validar contraseña
-      var contrasenaPattern = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z\d]).{8,}$/;
-      if (!contrasenaPattern.test(contrasena)) {
-        errorContrasena.innerHTML = 'La contraseña debe contener al menos 8 caracteres, una mayúscula, un número y un carácter especial.';
-        return false;
-      } else {
-        errorContrasena.innerHTML = '';
-      }
-
-      return true;
-    }
-  </script>
 </body>
 </html>
+
