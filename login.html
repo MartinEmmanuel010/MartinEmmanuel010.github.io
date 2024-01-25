@@ -74,27 +74,63 @@
     button:hover {
       background-color: #2980b9;
     }
+
+    .error-message {
+      color: red;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
 
   <div class="login-container">
-    <form class="login-form">
+    <form class="login-form" onsubmit="return validateForm()">
       <h2>Login</h2>
       <div class="input-container">
         <i class="fas fa-envelope"></i>
-        <input type="text" placeholder="Correo electrónico">
+        <input id="email" type="text" placeholder="Correo electrónico">
       </div>
       <div class="input-container">
         <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Contraseña">
+        <input id="password" type="password" placeholder="Contraseña">
       </div>
       <button type="submit">Iniciar sesión</button>
+      <div id="error-message" class="error-message"></div>
     </form>
   </div>
 
+  <script>
+    function validateForm() {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      // Validación de correo electrónico con expresión regular
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        displayErrorMessage("Correo electrónico no válido");
+        return false;
+      }
+
+      // Validación de contraseña
+      if (password.length > 8) {
+        displayErrorMessage("La contraseña no debe tener más de 8 caracteres");
+        return false;
+      }
+
+      // Si todo es válido, se enviará el formulario
+      return true;
+    }
+
+    function displayErrorMessage(message) {
+      var errorMessageElement = document.getElementById('error-message');
+      errorMessageElement.innerHTML = message;
+    }
+  </script>
 </body>
 </html>
+
+
+ 
 
 
 
