@@ -1,103 +1,32 @@
- <!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario de Inicio de Sesión</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    form {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 300px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    input {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 16px;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #007BFF;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    /* Estilos para mensajes de error */
-    .error-message {
-      color: #ff0000;
-      margin-top: -8px;
-      margin-bottom: 16px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="login.css">
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4y05f0bPCUYBmoVCTHZBAh7Vt8Tf-8yG5Vg&usqp=CAU" type="image/x-icon">
+    <title>Inicio de Sesion</title>
 </head>
 <body>
-  <form action="#" method="post" onsubmit="return validarFormulario()">
-    <label for="correo">Correo:</label>
-    <input type="email" id="correo" name="correo" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
-    <div class="error-message" id="error-correo"></div>
+    <p class="h1">Inicio de sesion</p>
+    <form class="login" id="formulario-sesion" action="login.php" method="post" onsubmit="return validarFormulario()">
+      <img id="logo" src="utsc.jpg" class="img-fluid" alt="...">
+      <div class="campos">
+          <div class="mb-3">
+            <label id="label-usuario" for="usuario" class="form-label">Ingresa tu correo electronico:</label>
+            <input type="text" class="form-control" name="usuario" id="usuario" aria-describedby="emailHelp" placeholder="example@example.com">
+            <div id="Aviso" class="form-text">Por favor revisar bien tu correo electrónico para evitar cualquier problema.</div>
+          </div>
+          <div class="mb-3">
+            <label id="label-contraseña" for="contraseña" class="form-label">Ingresa tu contraseña:</label>
+            <input type="password" class="form-control" id="contraseña" name="contraseña">
+          </div>
+          <button type="submit" id="start" class="btn btn-primary">Iniciar sesión</button>
+      </div>
+    </form>
 
-    <label for="contrasena">Contraseña:</label>
-    <input type="password" id="contrasena" name="contrasena" required pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z\d]).{8,}">
-    <div class="error-message" id="error-contrasena"></div>
-
-    <button type="submit">Iniciar Sesión</button>
-  </form>
-
-  <script>
-    function validarFormulario() {
-      var correo = document.getElementById('correo').value;
-      var contrasena = document.getElementById('contrasena').value;
-      var errorCorreo = document.getElementById('error-correo');
-      var errorContrasena = document.getElementById('error-contrasena');
-
-      // Validar correo
-      var correoPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!correoPattern.test(correo)) {
-        errorCorreo.innerHTML = 'Correo no válido';
-        return false;
-      } else {
-        errorCorreo.innerHTML = '';
-      }
-
-      // Validar contraseña
-      var contrasenaPattern = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z\d]).{8,}$/;
-      if (!contrasenaPattern.test(contrasena)) {
-        errorContrasena.innerHTML = 'La contraseña debe contener al menos 8 caracteres, una mayúscula, un número y un carácter especial.';
-        return false;
-      } else {
-        errorContrasena.innerHTML = '';
-      }
-
-      return true;
-    }
-  </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>  
+  </body>
 </html>
-
